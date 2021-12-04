@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartBeat Nhom 01</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/user.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    {{!--
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"
+        integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="table.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 style="color: #fff; font-family: 'Anton', sans-serif; font-size: 50px;">Heartbeat Table</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                {{{body}}}
+            </div>
+            <div class="col-lg-1">
+            </div>
+
+        </div>
+    </div>
+    <br />
+    <h1 style="color: #fff; font-family: 'Anton', sans-serif; font-size: 30px;">Thực hành CNTT 03</h1>
+</body>
+
+
+
+<script>
+    function loadFarms() {
+        $.ajax({
+            type: 'GET',
+            contentType: "application/json",
+            dataType: 'json',
+            url: 'http://localhost:4200/mixdata',
+            success: function (data) {
+                var str = "";
+                $.each(data, function (i, item) {
+                    str += '<tr style=" text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 25px;"> ';
+                    str += '<td>' + item.username + '</td>';
+                    str += '<td>' + item.age + '</td>';
+                    str += '<td>' + item.heartrate + '</td>';                  
+                    if(item.heartrate > 100 || item.heartrate < 60 )
+                    {
+                         str += '<td style="color: red;" > Bạn đang bị rối loạn nhịp tim </td>';
+                    }
+                    else
+                    {
+                         str += '<td style="color: green;"> Nhịp tim của bạn bình thường <i class="fab fa-500px"></i> </td>';
+                    }
+                   
+                    str += '</tr>';
+                })
+                console.log(data);
+                $("#dsbenhnhan").html(str);
+
+            },
+            error: function (data) {
+                alert("error");
+            }
+
+        })
+    }
+
+    window.addEventListener('load', () => {
+
+        $(document).ready(function () {
+            loadFarms();
+        });
+
+
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif; }
+
+/* Style the header */
+header {
+  background-color: #e97f7f;
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+  color: white; }
+
+/* Container for flexboxes */
+section {
+  height: 600px; }
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  background: #faf3f3;
+  color: #c04444;
+  font-size: 30px; }
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0; }
+
+/* Style the content */
+article {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  background-color: #c04444;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+#heart {
+  position: relative;
+  width: 200px;
+  height: 90px;
+  animation: heartbeat 1s infinite;
+  margin: 0 auto; }
+
+#heart:before,
+#heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 60px;
+  height: 100px;
+  background: #faf3f3;
+  -moz-border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  -moz-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  -o-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+
+#heart:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%; }
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.75); }
+  20% {
+    transform: scale(1); }
+  40% {
+    transform: scale(0.75); }
+  60% {
+    transform: scale(1); }
+  80% {
+    transform: scale(0.75); }
+  100% {
+    transform: scale(0.75); } }
+
+/* Style the footer */
+footer {
+  background-color: #f39191;
+  text-align: center;
+  color: white; }
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column; } }

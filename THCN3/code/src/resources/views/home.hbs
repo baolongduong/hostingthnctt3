@@ -1,0 +1,77 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeartBeat Nhom 01</title>
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/user.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  {{!--
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> --}}
+  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+
+<body>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+ <h5>Nhập tên và bấm đổi:</h5>
+ <br/>
+<div class="input-group">
+  <input class="form-control" type="text" id="inputName" /> 
+    <span class="input-group-btn">
+       <button class="button" onclick="inputNames()">Đổi tên</button>
+    </span>
+</div>
+    <br/>
+     <br/>
+     <h5>Nhập tuổi và bấm đổi:</h5>
+      <br/>
+    <div class="input-group">
+  <input class="form-control" type="text" id="inputAge" /> 
+    <span class="input-group-btn">
+       <button class="button" onclick="inputAges()">Đổi tuổi</button>
+    </span>
+</div>
+
+    <br />
+    <br />
+    <table class="table table-bordered mb-0" style="border: hotpink; display:block">
+      <thead style="display:block">
+        <tr style="text-align: center; color: #e97f7f;">
+          <th>Tên bệnh nhân</th>
+          <th>Tuổi bệnh nhân</th>
+          <th>Nhịp tim (BPM)</th>
+          <th style="width:440px">Kết quả</th>
+        </tr>
+      </thead>
+      <tbody style=" display:block; height: 300px;  overflow-y: auto;overflow-x: hidden;" id="dsbenhnhan">
+
+      </tbody>
+    </table>
+  </div>
+</body>
+
+<script>
+  function inputNames() {
+    var name = document.getElementById("inputName").value;
+    $.ajax({
+      type: "POST",
+      url: `http://localhost:4200/mixdata/user?name=${name}`
+    });
+  }
+
+
+  function inputAges() {
+    var newage = document.getElementById("inputAge").value;
+    $.ajax({
+      type: "POST",
+      url: `http://localhost:4200/mixdata/ageuser?newage=${newage}`
+    });
+  }
+
+
+</script>
